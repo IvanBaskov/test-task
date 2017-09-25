@@ -3,9 +3,6 @@
     "server/src/**/*"
   ],
   "compilerOptions": {
-    "exclude": [
-      "node_modules"
-    ],
     "module": "commonjs",
     "target": "es6",
     "noImplicitAny": false,

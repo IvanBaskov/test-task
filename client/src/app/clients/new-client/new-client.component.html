@@ -1,0 +1,66 @@
+<h3 class="page-title">New client</h3>
+<div class="row">
+  <div class="col-md-offset-3 col-lg-offset-4 col-sm-offset-1 col-md-6 col-lg-4 col-sm-10">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error' : !form.controls.email.valid && form.controls.email.dirty}">
+        <label class="form-control-label">Email:</label>
+        <input type="text"
+               class="form-control"
+               formControlName="email"
+               placeholder="Example: user@example.com">
+        <div *ngIf="!form.controls.email.valid && form.controls.email.dirty">
+          <span *ngIf="form.controls.email.hasError('required')" class="help-block">Email is required</span>
+          <span *ngIf="form.controls.email.errors?.email" class="help-block">Invalid email</span>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error' : !form.controls.name.valid && form.controls.name.dirty}">
+        <label class="form-control-label">Name:</label>
+        <input class="form-control"
+               type="text"
+               formControlName="name"
+               placeholder="Example: Robert">
+        <div *ngIf="!form.controls.name.valid && form.controls.name.dirty">
+          <span *ngIf="form.controls.name.errors?.required" class="help-block">Name is required</span>
+          <span *ngIf="form.controls.name.errors?.minlength" class="help-block">Name is too short</span>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error' : !form.controls.phone.valid && form.controls.phone.dirty}">
+        <label class="form-control-label">Phone:</label>
+        <input type="text"
+               class="form-control"
+               formControlName="phone"
+               id="phone"
+               placeholder="Example: +38088887887">
+        <div *ngIf="!form.controls.phone.valid && form.controls.phone.dirty">
+          <span *ngIf="form.controls.phone.errors?.phone" class="help-block">Invalid phone</span>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error' : !form.controls.birthday.valid && form.controls.birthday.dirty}">
+        <label class="form-control-label">Birthday:</label>
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               formControlName="birthday" type="date">
+        <div *ngIf="!form.controls.birthday.valid && form.controls.birthday.dirty">
+          <span *ngIf="form.controls.birthday.errors?.date" class="help-block">Invalid date</span>
+          <span *ngIf="form.controls.birthday.errors?.minDate" class="help-block">Too old</span>
+          <span *ngIf="form.controls.birthday.errors?.maxDate" class="help-block">Too young</span>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error' : !form.controls.address.valid && form.controls.address.dirty}">
+        <label class="form-control-label">Address:</label>
+        <input class="form-control"
+               type="text"
+               formControlName="address"
+               placeholder="Example: Wall street 1">
+        <div *ngIf="!form.controls.address.valid && form.controls.name.dirty">
+          <span *ngIf="form.controls.address.errors?.required" class="help-block">Address is required</span>
+          <span *ngIf="form.controls.address.errors?.minlength" class="help-block">Address is too short</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Add client</button>
+      </div>
+    </form>
+  </div>
+</div>

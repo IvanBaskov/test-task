@@ -1,0 +1,20 @@
+:host {
+  width: 100%;
+  display: block;
+}
+
+.center-block {
+  float: none;
+}
+
+.filter {
+  margin-bottom: 20px;
+}
+
+.panel {
+  padding: 0;
+
+  .panel-heading {
+    font-size: 1.2em;
+  }
+}

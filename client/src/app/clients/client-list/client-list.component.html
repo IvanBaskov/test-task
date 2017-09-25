@@ -1,0 +1,50 @@
+<h3 class="page-title">Client list</h3>
+<div class="panel panel-primary col-sm-9 center-block">
+  <div class="panel-heading text-center">Filters</div>
+  <div class="panel-body form-inline text-center">
+    <div class="input-group">
+      <input [(ngModel)]="filters.name" (ngModelChange)="changeFilter($event)" type="text" class="form-control"
+             placeholder="Name">
+    </div>
+    <div class="input-group">
+      <input [(ngModel)]="filters.phone" (ngModelChange)="changeFilter($event)" type="text" class="form-control"
+             placeholder="Phone">
+    </div>
+    <div class="input-group">
+      <input [(ngModel)]="filters.birthYearFrom" (ngModelChange)="changeFilter($event)" type="text" class="form-control"
+             placeholder="Birth year from">
+    </div>
+    <div class="input-group">
+      <input [(ngModel)]="filters.birthYearTo" (ngModelChange)="changeFilter($event)" type="text" class="form-control"
+             placeholder="Birth year to">
+    </div>
+  </div>
+</div>
+<div class="col-sm-9 center-block text-center">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Birthday</td>
+      <td>Address</td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let row of rows">
+      <tr>
+        <td><a routerLink="/clients/{{row.id}}">{{row.name}}</a></td>
+        <td>{{row.email}}</td>
+        <td>{{row.phone}}</td>
+        <td>{{row.birthday}}</td>
+        <td>{{row.address}}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <pagination *ngIf="page.totalElements > 0" [totalItems]="page.totalElements" [(ngModel)]="page.pageNumber"
+              [itemsPerPage]="page.itemsPerPage"
+              (pageChanged)="setPage($event)"></pagination>
+</div>
+
